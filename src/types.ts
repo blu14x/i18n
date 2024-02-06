@@ -4,12 +4,13 @@ import type { PluginOptions } from '@intlify/unplugin-vue-i18n'
 import type { NuxtPage } from '@nuxt/schema'
 import type { STRATEGIES } from './constants'
 
+export type CookieDomainCallback = () => string | null
 export type RedirectOnOptions = 'all' | 'root' | 'no prefix'
 
 export interface DetectBrowserLanguageOptions {
   alwaysRedirect?: boolean
   cookieCrossOrigin?: boolean
-  cookieDomain?: string | null
+  cookieDomain?: CookieDomainCallback | string | null
   cookieKey?: string
   cookieSecure?: boolean
   fallbackLocale?: Locale | null

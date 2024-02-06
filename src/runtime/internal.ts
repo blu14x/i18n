@@ -133,7 +133,8 @@ export function setLocaleCookie(locale: string) {
   }
 
   if (cookieDomain) {
-    cookieOptions.domain = cookieDomain
+    const domain = typeof cookieDomain === 'function' ? cookieDomain() : cookieDomain
+    if (domain) cookieOptions.domain = domain
   }
 
   const localeCookie = useNuxtCookie(cookieKey, cookieOptions)
